@@ -1,5 +1,6 @@
 const currentDate = document.querySelector(".current-date"),
-daysTag = document.querySelector(".days");
+daysTag = document.querySelector(".days"),
+prevNextIcon = document.querySelectorAll(".icons span");
 
 // getting new date, current year and month
 let date = new Date(),
@@ -21,3 +22,9 @@ const renderCalendar = () => {
 	daysTag.innerHTML = liTag;
 }
 renderCalendar();
+
+prevNextIcon.forEach( icon => {
+	icon.addEventListener("click", () => {
+		console.log(icon);
+	});
+});
