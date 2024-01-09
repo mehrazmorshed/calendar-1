@@ -24,7 +24,9 @@ const renderCalendar = () => {
 renderCalendar();
 
 prevNextIcon.forEach( icon => {
-	icon.addEventListener("click", () => {
-		console.log(icon);
+	icon.addEventListener("click", () => { // adding click events on both icons
+		// if clicked icon is previous icon, then decrease current month else increase current month
+		currMonth = icon.id === "prev" ? currMonth - 1 : currMonth + 1;
+		renderCalendar();
 	});
 });
