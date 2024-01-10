@@ -19,11 +19,13 @@ const renderCalendar = () => {
 
 	for (let i = firstDayofMonth; i > 0; i--) { // last days of previous month
 		liTag += `<li class="inactive">${lastDateofLastMonth - i + 1}</li>`; 
-
 	}
 
 	for (let i = 1; i <= lastDateofMonth; i++) { // all days of current month
-		liTag += `<li>${i}</li>`;
+		// adding active class to li if the current day, month, and year matched
+		let isToday = i === date.getDate() && currMonth === new Date().getMonth() 
+						&& currYear === new Date().getFullYear() ? "active" : "";
+		liTag += `<li class="${isToday}">${i}</li>`;
 	}
 
 	for (let i = lastDayofMonth; i < 6; i++) { // first days of next month
