@@ -42,6 +42,15 @@ prevNextIcon.forEach( icon => {
 	icon.addEventListener("click", () => { // adding click events on both icons
 		// if clicked icon is previous icon, then decrease current month else increase current month
 		currMonth = icon.id === "prev" ? currMonth - 1 : currMonth + 1;
+
+		if(currMonth < 0 || currMonth > 11) { // if current month is less than 0 or greater than 11
+			// create a new date of current year and month and pass it as date value
+			date = new Date(currYear, currMonth);
+			currYear = date.getFullYear(); // updating current year with new date year
+			currMonth = date.getMonth(); // updating current month with new date month
+		} else { // else pass new Date as date value
+			date = new Date();
+		}
 		renderCalendar();
 	});
 });
